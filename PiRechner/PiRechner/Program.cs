@@ -10,26 +10,52 @@ namespace PiRechner
     {
         static void Main(string[] args)
         {
-            double count = 1.0;
-            bool zeichen = false;
-            double Bruch = 1.0;
+            double _input = 215;
+            int c = 0;
 
-            for(int i = 0; i <= 999999; i++)
+            int[] binaryNumber = new int[8];
+
+
+            double input = _input;
+
+            if (input > 255)
             {
-                Bruch += 2.0;
-                
-                if (zeichen)
-                {   
-                    count += 1.0 / Bruch;
-                    zeichen = false;
+                Console.WriteLine("Die Zahl darf nicht größer als 255 sein!\n\n", Console.ForegroundColor = ConsoleColor.Red);
+
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                Environment.Exit(0);
+            }
+
+            while (input > 1)
+            {
+                input /= 2;
+
+                if (input % 2 == 0)
+                {
+                    binaryNumber[c] = 0;
                 }
                 else
-                {       
-                    count -= 1.0 / Bruch;
-                    zeichen = true;
-                }    
+                {
+                    binaryNumber[c] = 1;
+                }
+
+                input = Math.Floor(input);
+                c++;
             }
-            Console.WriteLine(count*4);
+
+            Array.Reverse(binaryNumber);
+
+            Console.WriteLine("Input: " + _input + "\n");
+
+            Console.Write("Binary: ");
+
+            foreach (var item in binaryNumber)
+            {
+                Console.Write(item);
+            }
+
+            Console.Write("\n");
         }
     }
 }

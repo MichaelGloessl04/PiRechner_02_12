@@ -125,7 +125,7 @@ namespace PiRechner
 
                 Console.SetCursorPosition(0, 0);
                 Console.Write(v2);
-                a
+                
                 System.Threading.Thread.Sleep(500);
             }
         }
